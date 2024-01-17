@@ -43,12 +43,12 @@ function SignIn() {
                         <div className="text-white  text-[24px] ">Don't Have Account ?</div>
                         <div className="text-white text-[24px]  ">Register As</div>
                         <div className="flex gap-6 pt-2" >
-                        <a href="">
+                        <a href="/MenteeRegister">
                             <button className="flex    border-secondary drop-shadow-[0_5px_5px_rgba(58,163,159,0.8)] bg-secondary  rounded-3xl border-[2px] text-white  px-3 py-2" >
                                 <p className=" pr-4 pl-4 ">Mentee</p>
                             </button>
                         </a>
-                        <a href="">
+                        <a href="/MentorRegister">
                             <button className=" flex    border-secondary drop-shadow-[0_5px_5px_rgba(58,163,159,0.8)] bg-secondary  rounded-3xl border-[2px] px-3 py-2 text-white " >
                                 <p className=" pr-4 pl-4 ">Mentor</p>
                             </button>
