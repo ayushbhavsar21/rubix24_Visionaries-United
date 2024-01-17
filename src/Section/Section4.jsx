@@ -11,7 +11,7 @@ function Section4() {
       <div className='flex justify-center gap-8  w-full items-center'>
          <div className='w-[300px] h-[300px] bg-secondary shadow-lg shadow-white'>
            <div className='flex flex-col gap-2 h-[100%] justify-center pl-4 text-white w-[280px]'>
-           <p>Ayush Bhavsar</p>
+           <p className='font-bold ' >Ayush Bhavsar</p>
             <p>12 September 2023</p>
             <p>
                 
@@ -22,7 +22,7 @@ function Section4() {
          </div>
          <div className='w-[300px] h-[300px] bg-white shadow-lg shadow-white'>
          <div className='flex flex-col gap-2 h-[100%] justify-center pl-4 text-gray-400 w-[280px]'>
-           <p>Satya Prakash Jena</p>
+           <p className='font-bold ' >Satya Prakash Jena</p>
             <p>18 December 2023</p>
             <p>
                 
@@ -32,7 +32,7 @@ function Section4() {
          </div>
          <div className='w-[300px] h-[300px] bg-white shadow-lg shadow-white'>
          <div className='flex flex-col gap-2 h-[100%] justify-center pl-4 text-gray-400 w-[280px]'>
-           <p>Aviral Patel</p>
+           <p className='font-bold ' >Aviral Patel</p>
             <p>17 January 2024</p>
             <p>
                 
