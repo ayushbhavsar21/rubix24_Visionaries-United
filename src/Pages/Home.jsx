@@ -3,7 +3,7 @@ import Navbar from "../Components/Navbar"
 import Section1 from '../Section/Section1'
 import Section2 from '../Section/Section2'
 import Section4 from '../Section/Section4'
-import MenteeNavbar from "../Mentee/MenteeNavbar"
+import Workshop from "../Mentee/Workshop"
 
 function Home(){
     return (
@@ -12,7 +12,7 @@ function Home(){
         <Section1/>
         <Section2/>
         <Section4/>
-        <MenteeNavbar/>
+        <Workshop/>
         </>
     )
 }
