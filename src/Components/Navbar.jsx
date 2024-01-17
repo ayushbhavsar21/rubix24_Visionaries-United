@@ -2,7 +2,27 @@ import React from 'react'
 import NavLogo from '../assets/navLogo.svg'
 import Ham from '../assets/ham.svg'
 import { useState } from 'react'
+import { useAuth } from '../context/AuthContext'
+import { signOut } from 'firebase/auth';
+import { auth } from '../config/firebase';
+
 function Navbar() {
+
+  const { isLoggedIn , logout } = useAuth(); 
+
+  const handleLogout = async() => {
+    try{
+        await signOut(auth);
+        logout();
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('userName');
+        localStorage.removeItem('userRole');
+        localStorage.removeItem('userId');
+    }catch(error){
+        console.log(error);
+    }
+  };
+
     const [isDropdownOpen, setDropdownOpen] = useState(false);
     const toggleDropdown = () => {
         setDropdownOpen(!isDropdownOpen);
@@ -20,10 +40,15 @@ function Navbar() {
         <a href="/">Home</a>
         <a href="">Find a mentor</a>
         <a href="/MentorRegister">Become a Mentor</a>
-        <div className="md:flex gap-4 ">
+        {isLoggedIn ? (
+          <a onClick={handleLogout} className='py-2 px-4 bg-secondary rounded-3xl'>Logout</a>
+        ):(
+          <div className="md:flex gap-4 ">
           <a href="/SignIn" className='py-2 px-5 rounded-3xl border-[2px] border-secondary'>Log In</a>
           <a href="/MenteeRegister" className='py-2 px-4 bg-secondary rounded-3xl'>Register</a>
         </div>
+        )}
+        
       </div>
       <div className='md:hidden'>
        <button onClick={toggleDropdown}>
@@ -52,7 +77,15 @@ function Navbar() {
             </a>
             <hr className="absolute left-2 right-2 border-white lg:hidden my-2" />
           </div>
-          <div>
+          {isLoggedIn ? (
+            <div className='self-center pt-8'> 
+          
+            <a onClick={handleLogout} className='py-2 px-4 bg-secondary rounded-3xl text-[18px] text-white'>Logout</a>
+           
+          </div>
+          ) : (
+            <>
+            <div>
             <a href="/SignIn" className='text-[18px] text-white pl-2'>
               Log In
             </a>
@@ -63,6 +96,8 @@ function Navbar() {
             <a href="/MenteeRegister" className='py-2 px-4 bg-secondary rounded-3xl text-[18px] text-white'>Register</a>
            
           </div>
+            </>
+          )}
     </div>
     )}
     
@@ -72,3 +107,7 @@ function Navbar() {
 }
 
 export default Navbar
+              
+              
+              
+

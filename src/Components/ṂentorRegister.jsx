@@ -8,11 +8,14 @@ import { auth, googleProvider } from '../config/firebase'
 import { collection, addDoc} from 'firebase/firestore';
 import { db } from '../config/firebase';
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function MentorRegister() {
     
     const userCollectionRef = collection(db, "users");
     const navigate = useNavigate();
+
+    const {login} = useAuth();
     
     const [user, setUser] = useState({
         userName: "",
@@ -52,6 +55,7 @@ function MentorRegister() {
                 userId: auth?.currentUser?.uid,
               })
 
+              login();
               navigate("/");
       
               console.log('User registered successfully:', userCredential.user);
@@ -80,6 +84,7 @@ function MentorRegister() {
                 userId: user.uid,
             });
 
+            login();
             console.log(user);
 
             navigate("/");
