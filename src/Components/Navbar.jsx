@@ -1,6 +1,6 @@
 import React from 'react'
-import navLogo from '../assets/navLogo.svg'
-import ham from '../assets/ham.svg'
+import NavLogo from '../assets/navLogo.svg'
+import Ham from '../assets/ham.svg'
 import { useState } from 'react'
 function Navbar() {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -12,7 +12,7 @@ function Navbar() {
    
     <div className='h-[12vh] bg-primary flex justify-between items-center text-white w-full md:p-8 pr-4 pl-2'>
       <div className='flex justify-start items-center'>
-        <img src={navLogo} alt="" />
+        <img src={NavLogo} alt="" />
       </div>
       <div className='md:flex gap-4 items-center hidden'>
         <a href="">Find a mentor</a>
@@ -22,7 +22,7 @@ function Navbar() {
       </div>
       <div className='md:hidden'>
        <button onClick={toggleDropdown}>
-       <img src={ham} className='h-[30px]' alt="" />
+       <img src={Ham} className='h-[30px]' alt="" />
        </button>
       </div>
 
