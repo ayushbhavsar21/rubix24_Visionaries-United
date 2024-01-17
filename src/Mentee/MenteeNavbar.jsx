@@ -17,8 +17,8 @@ function MenteeNavbar() {
         </a>
       </div>
       <div className='md:flex  gap-[5vw] items-center j hidden'>
-        <a href="">Workshops</a>
         <a href="">DashBoard</a>
+        <a href="">Workshops</a>
         <a href="">Find a mentor</a>
         <a href="" className='py-2 px-5 rounded-3xl border-[2px] border-secondary'>Log Out</a>
       </div>
@@ -33,13 +33,13 @@ function MenteeNavbar() {
     <div className='w-full h-[88vh] bg-primary flex flex-col gap-6 pt-8'>
     <div>
             <a href="" className='text-[18px] text-white pl-2'>
-              WorkShops
+              DashBoard
             </a>
             <hr className="absolute left-2 right-2 border-white lg:hidden my-2" />
           </div>
           <div>
             <a href="" className='text-[18px] text-white pl-2'>
-              DashBoard
+              Workshops
             </a>
             <hr className="absolute left-2 right-2 border-white lg:hidden my-2" />
           </div>
