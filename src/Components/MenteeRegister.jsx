@@ -122,7 +122,7 @@ function MenteeRegister() {
                         <div className="pl-1 pb-2">Password</div>
                         <input className="h-[45px] w-[100%]  rounded-lg " type="text" name="password"  onChange={handleInput}/>
                         </div>
-                        <button  className="drop-shadow-[0_5px_5px_rgba(58,163,159,0.8)] px-4 py-3 w-[120px] bg-secondary text-white  rounded-3xl  self-center mt-4" >
+                        <button  className=" ml-[37%] drop-shadow-[0_5px_5px_rgba(58,163,159,0.8)] px-4 py-3 w-[120px] bg-secondary text-white  rounded-3xl  self-center mt-4" >
                            Register
                         </button>
                         <img className=" drop-shadow-2xl " src={line} alt="" />
