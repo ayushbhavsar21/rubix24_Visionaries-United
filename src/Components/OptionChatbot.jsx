@@ -26,17 +26,20 @@ const OptionChatbot = () => {
       let botResponse = '';
 
       switch (option) {
-        case 'How to Buy':
-          botResponse = 'To buy a product, visit our product pages and click on the "Buy Now" button.';
+        case 'How to Create a Mentee Account':
+          botResponse = 'To create a Mentee Account... Click on Register button on Navbar , then fill the details and Click on Register ';
           break;
-        case 'Order History':
-          botResponse = 'To view your order history, log in to your account and go to the order history section.';
+        case 'How to Become a Mentor':
+          botResponse = 'To create a Mentor ... Click on "Become a Mentor" tap on Navbar , then fill the details and Click on Register... After that Click on "Create a Profile" tap in Navbar, fill the form .. And finally your account is created !!  ';
           break;
-        case 'Language Support':
-          botResponse = 'We currently support multiple languages. You can change your language preference in your account settings.';
+        case 'Find Mentors':
+          botResponse = 'For finding Mentor first SignIn or Register as Mentee , Then click on "Find a Mentor" tap on Navbar';
           break;
-        case 'Product Options':
-          botResponse = 'Explore our range of products and choose the one that suits your needs.';
+        case 'Explore Free Workshops':
+          botResponse = 'SignIn or Register as Mentee and go to Workshop tab on Navbar, there you will find all the free workshops hosted by top Mentors';
+          break;
+        case '1:1 MentorShip Code':
+          botResponse = 'When a Mentee Subscribe to a Mentor , Mentor provides and PIN to Mentee which is used to join 1:1 session , this is a very confidential PIN and mentee should preserve it. ';
           break;
         default:
           botResponse = `You selected: ${option}. Here is a link to ${option} page.`;
@@ -75,19 +78,41 @@ const OptionChatbot = () => {
   }, [chatHistory]);
 
   return (
-    <div className={`font-playfair fixed bottom-4 right-4 transition-all ${isExpanded ? 'h-[70%] w-[350px]' : 'h-12 w-12'}`}>
+    <div className={`font-playfair fixed mb-2 bottom-4 right-4 transition-all ${isExpanded ? 'h-[70%] w-[350px] mb-[1vh]  ' : 'h-12 w-12'}`}>
       {isExpanded && (
-        <button className="absolute top-4 right-2 text-lg" onClick={handleCloseChatbot}>
+        <button className="absolute top-4 pt-1 pr-1 right-2 text-lg font-bold" onClick={handleCloseChatbot}>
           X
         </button>
       )}
       {!isExpanded ? (
         <div className=" cursor-pointer absolute bottom-0 right-0" onClick={() => setIsExpanded(true)}>
           {/* You can customize the appearance of the small circle here */}
-          <img src={chatbot} alt="" />
+          <div className=" h-[9vh] w-[9vh] rounded-full flex justify-center bg-white ">
+            <img className='p-1' src={chatbot} alt="" />
+          </div>
         </div>
       ) : (
-        <div className="max-w-lg mx-auto mt-4 p-4 border rounded shadow bg-white">
+        <div className="max-w-lg mx-auto mt-4 p-4 border-2 rounded-xl border-black  shadow  bg-pink-100 ">
+          
+          <div>
+            {isLoading && <p>Loading...</p>}
+            {selectedOption && (
+              <p className="mb-2">You selected: {selectedOption}</p>
+            )}
+            {!isLoading && !selectedOption && (
+              <div className='flex flex-col items-center justify-center gap-2'>
+                <p className=" text-[20px] font-bold ">Please choose an option:</p>
+                <div className="flex gap-4 flex-wrap  ">
+                  <button onClick={() => handleOptionClick('How to Create a Mentee Account')} className="btn p-1 pl-2 pr-2 border-[1.5px] border-black bg-secondary rounded-3xl text-white text-[14px]  ">How to Create a Mentee Account</button>
+                  <button onClick={() => handleOptionClick('How to Become a Mentor')} className="btn p-1 pl-2 pr-2 border-[1.5px] border-black bg-secondary rounded-3xl text-white text-[14px] ">How to Become a Mentor</button>
+                  <button onClick={() => handleOptionClick('Find Mentors')} className="btn p-1 pl-2 pr-2 border-[1.5px] border-black bg-secondary rounded-3xl text-white text-[14px] ">Find Mentors</button>
+                  <button onClick={() => handleOptionClick('Explore Free Workshops')} className="btn p-1 pl-2 pr-2 border-[1.5px] border-black bg-secondary rounded-3xl text-white text-[14px] ">Explore Free Workshops</button>
+                  <button onClick={() => handleOptionClick('1:1 MentorShip Code')} className="btn p-1 pl-2 pr-2 border-[1.5px] border-black bg-secondary rounded-3xl text-white text-[14px] ">1:1 MentorShip Code</button>
+                {/* Add more buttons/options as needed */}
+                </div>
+              </div>
+            )}
+          </div>
           <div id="chatContainer" className="mb-4 h-[40vh] overflow-y-auto">
             <h2 className="text-lg font-semibold mb-2">Chatbot</h2>
             <div className="flex flex-col">
@@ -99,22 +124,6 @@ const OptionChatbot = () => {
                 </div>
               ))}
             </div>
-          </div>
-          <div>
-            {isLoading && <p>Loading...</p>}
-            {selectedOption && (
-              <p className="mb-2">You selected: {selectedOption}</p>
-            )}
-            {!isLoading && !selectedOption && (
-              <div className='flex flex-col items-center gap-2'>
-                <p className="mb-2">Please choose an option:</p>
-                <button onClick={() => handleOptionClick('How to Buy')} className="btn w-[200px] bg-secondary text-white">How to Buy</button>
-                <button onClick={() => handleOptionClick('Order History')} className="btn w-[200px] bg-secondary text-white">Order History</button>
-                <button onClick={() => handleOptionClick('Language Support')} className="btn w-[200px] bg-secondary text-white">Language Support</button>
-                <button onClick={() => handleOptionClick('Product Options')} className="btn w-[200px] bg-secondary text-white">Product Options</button>
-                {/* Add more buttons/options as needed */}
-              </div>
-            )}
           </div>
         </div>
       )}
