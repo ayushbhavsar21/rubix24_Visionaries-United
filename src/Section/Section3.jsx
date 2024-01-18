@@ -35,29 +35,29 @@ function Section3() {
       <div className='flex flex-col h-[80vh] justify-evenly text-gray-900 font-playfair'>
         
         <div>
-          <button className='py-6 w-[200px] dark:bg-white hover:bg-secondary focus:bg-secondary bg-primary text-white dark:text-black' onClick={() => setSelectedCategory('DSA')}>
+          <button className='py-6 w-[200px] dark:bg-black dark:hover:bg-secondary focus:bg-secondary bg-secondary text-white' onClick={() => setSelectedCategory('DSA')}>
             DSA →
           </button>
         </div>
         <div>
-          <button className='py-6 w-[200px] dark:bg-white hover:bg-secondary focus:bg-secondary bg-primary text-white dark:text-black' onClick={() => setSelectedCategory('WebDevelopment')}>
+          <button className='py-6 w-[200px] dark:bg-black dark:hover:bg-secondary focus:bg-secondary bg-secondary text-white' onClick={() => setSelectedCategory('WebDevelopment')}>
             Web Development →
           </button>
         </div>
         <div>
-          <button className='py-6 w-[200px] dark:bg-white hover:bg-secondary focus:bg-secondary bg-primary text-white dark:text-black' onClick={() => setSelectedCategory('aiml')}>
+          <button className='py-6 w-[200px] dark:bg-black dark:hover:bg-secondary focus:bg-secondary bg-secondary text-white' onClick={() => setSelectedCategory('aiml')}>
             AI/ML →
           </button>
         </div>
         <div>
-          <button className='py-6 w-[200px] dark:bg-white hover:bg-secondary focus:bg-secondary bg-primary text-white dark:text-black' onClick={() => setSelectedCategory('blockchain')}>
+          <button className='py-6 w-[200px] dark:bg-black dark:hover:bg-secondary focus:bg-secondary bg-secondary text-white' onClick={() => setSelectedCategory('blockchain')}>
             Blockchain →
           </button>
         </div>
         {/* Add buttons for other categories as needed */}
       </div>
       <div className="overflow-y-auto max-h-[100vh]">
-        <div className="mx-auto grid w-full max-w-7xl items-center space-y-4 px-2 py-10 md:grid-cols-2 md:gap-6 md:space-y-0 lg:grid-cols-4">
+        <div className="mx-auto grid w-[80%] max-w-7xl items-center space-y-4 px-2 py-10 md:grid-cols-2 md:gap-6 md:space-y-0 lg:grid-cols-3">
         {selectedCategory === 'DSA' && mentorList
        .filter(mentor => mentor.domain === 'DSA')
        .map((item) => (
