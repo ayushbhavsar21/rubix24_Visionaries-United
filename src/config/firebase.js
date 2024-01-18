@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 import {getFirestore} from '@firebase/firestore';
 import {getAuth, GoogleAuthProvider} from 'firebase/auth';
 import { getMessaging } from "firebase/messaging";
+import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCpmG1zh-CWsxrMlvsbnn3M8ZWG-L3jb5o",
@@ -20,3 +21,4 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const messaging = getMessaging(app);
 export const googleProvider = new GoogleAuthProvider();
+export const storage = getStorage(app);

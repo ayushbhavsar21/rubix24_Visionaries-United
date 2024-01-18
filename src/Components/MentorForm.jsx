@@ -2,6 +2,8 @@ import React,{ useState} from 'react'
 import { collection, addDoc } from 'firebase/firestore';
 import { db, auth } from '../config/firebase';
 import { useNavigate } from "react-router-dom";
+import { storage } from '../config/firebase';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 function MentorForm() {
 
@@ -17,6 +19,8 @@ function MentorForm() {
     })
 
     const navigate = useNavigate();
+    const [image, setImage] = useState(null);
+    const [imageUrl, setImageUrl] = useState('');
 
     const mentorCollectionRef = collection(db, "Mentors");
 
@@ -29,13 +33,70 @@ function MentorForm() {
         [name]: value
       })
     }
+    const handleImageChange = (e) => {
+      if (e.target.files.length > 0) {
+        setImage(e.target.files.item(0));
+      }
+    };
 
     const handleSubmit = async(e) =>{
       e.preventDefault();
       try {
 
-          console.log(auth?.currentUser?.uid)
-          await addDoc(mentorCollectionRef,{
+          // console.log(auth?.currentUser?.uid)
+          // await addDoc(mentorCollectionRef,{
+          //   name: mentor.name,
+          //   email: mentor.email,
+          //   phone: mentor.phone,
+          //   price: mentor.price,
+          //   bio: mentor.bio,
+          //   qualification: mentor.qualification,
+          //   availability: mentor.availability,
+          //   domain: mentor.domain,
+          //   userId: auth?.currentUser?.uid,
+          // })
+
+          // navigate("/");
+  
+          // console.log('Mentor Profile Created successfully:', userCredential.user);
+          if (!auth.currentUser) {
+            console.error('User not authenticated');
+            return;
+          }
+    
+          console.log('Starting form submission...');
+    
+          let imageUrl = ''; // Initialize imageUrl here
+    
+          if (image) {
+            try {
+              const storageRef = getStorage();
+              const imageRef = ref(
+                storageRef,
+                `images/${auth.currentUser.uid}/${image.name}`
+              );
+    
+              console.log('Uploading image...');
+    
+              await uploadBytes(imageRef, image);
+    
+              console.log('Image uploaded successfully.');
+    
+              imageUrl = await getDownloadURL(imageRef);
+    
+              console.log('Image URL:', imageUrl);
+    
+              alert('Image uploaded successfully!');
+            } catch (imageError) {
+              console.error('Error uploading image:', imageError);
+              alert('Error uploading image. Please try again.');
+              return; // Return early if there's an error with image upload
+            }
+          }
+    
+          console.log('Adding mentor data to Firestore...');
+    
+          const mentorData = {
             name: mentor.name,
             email: mentor.email,
             phone: mentor.phone,
@@ -44,12 +105,19 @@ function MentorForm() {
             qualification: mentor.qualification,
             availability: mentor.availability,
             domain: mentor.domain,
-            userId: auth?.currentUser?.uid,
-          })
-
-          navigate("/");
-  
-          console.log('Mentor Profile Created successfully:', userCredential.user);
+            imageUrl: imageUrl,
+            userId: auth.currentUser.uid,
+          };
+    
+          // Add mentor data to Firestore
+          const docRef = await addDoc(mentorCollectionRef, mentorData);
+    
+          console.log(
+            'Mentor Profile Created successfully. Document ID:',
+            docRef.id
+          );
+    
+          navigate('/');
         
     } catch (error) {
         console.log(error);
@@ -60,7 +128,7 @@ function MentorForm() {
     
       
 
-<form onSubmit={handleSubmit} class="p-8 bg-primary font-playfair">
+<form onSubmit={handleSubmit} className="p-8 bg-primary font-playfair">
 <div class="grid md:grid-cols-2 md:gap-6">
     <div class="relative z-0 w-full mb-5 group">
         <input type="text" name="name" id="names" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-500 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required  value={mentor.name} onChange={handleInput}/>
@@ -110,6 +178,18 @@ function MentorForm() {
   
  </div>
   */}
+   <div className="mt-4">
+        <label className="block mb-2 text-sm font-medium text-gray-500" htmlFor="user_avatar">
+          Upload Image
+        </label>
+        <input
+          onChange={handleImageChange}
+          className="block text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none p-2"
+          type="file"
+          accept="image/*"
+          id="user_avatar"
+        />
+      </div>
 
   <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mt-4">Submit</button>
 </form>
