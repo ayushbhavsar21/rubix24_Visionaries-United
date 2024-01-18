@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import StarRating from './StarRating';
+import { updateDoc, getDocs, doc, collection } from 'firebase/firestore';
+import { db , auth} from '../config/firebase';
 
 function CourseCards({ props }) {
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -11,6 +13,34 @@ function CourseCards({ props }) {
   const handleClosePopup = () => {
     setPopupOpen(false);
   };
+
+  const handleClick = async(event, mentorId) => {
+    event.preventDefault();
+    
+    const data = await getDocs(userCollectionRef);
+    const filteredData = data.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }))
+
+    const currentUserId = auth?.currentUser?.uid;
+
+    const foundDocument = filteredData.find((doc) => doc.userId === currentUserId);
+        const foundDocumentId = foundDocument.id;
+        console.log(foundDocument);
+        const userDocRef = doc(db, "users", foundDocumentId);
+    
+        try {
+
+            await updateDoc(userDocRef, {
+                MentorId: mentorId,
+            });
+            
+        } catch (error) {
+            console.error('Error updating room code:', error.message);
+        }
+    
+};
 
   // Helper function to truncate bio to 10-15 words
   const truncateBio = (bio) => {
@@ -61,6 +91,9 @@ function CourseCards({ props }) {
           <p>{props.qualification}</p>
           <p>{props.domain}</p>
           <StarRating rating={props.popularity} />
+          <button onClick={async(event) => handleClick(event, props.id)} className="ml-[37%]  drop-shadow-[0_5px_5px_rgba(58,163,159,0.8)] px-4 py-3 w-[120px] bg-secondary text-white  rounded-3xl  self-center mt-4 " >
+              Register
+          </button>
         </div>
       )}
     </>
