@@ -10,6 +10,8 @@ import MenteeRegister from './Components/MenteeRegister'
 import RoomCode from './Pages/RoomCode'
 import RoomPage from './Pages/RoomPage'
 import Notifications from './Pages/Notifications'
+import Dashboard from './Mentee/Dashboard'
+import Workshop from './Mentee/Workshop'
 function App() {
 
   return (
@@ -23,6 +25,8 @@ function App() {
       <Route path='/room-code' element={<RoomCode/>}/>
       <Route path='/room/:roomId' element={<RoomPage/>} />
       <Route path='/notifications-page' element={<Notifications/>}/>
+      <Route path='/Dashboard' element={<Dashboard/>}/>
+      <Route path='/Workshop' element={<Workshop/>}/>
     </Routes>
     </>
   )

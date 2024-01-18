@@ -61,7 +61,7 @@ function Navbar() {
       )}
         
         {isLoggedIn ? (
-          <a onClick={handleLogout} className='py-2 px-4 bg-secondary rounded-3xl'>Logout</a>
+          <a onClick={handleLogout} className='py-2 px-4 bg-secondary rounded-3xl cursor-pointer '>Logout</a>
         ):(
           <div className="md:flex gap-4 ">
           <a href="/SignIn" className='py-2 px-5 rounded-3xl border-[2px] border-secondary'>Log In</a>
