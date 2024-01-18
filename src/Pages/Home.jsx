@@ -9,6 +9,7 @@ import Workshop from "../Mentee/Workshop"
 import RoomCode from "./RoomCode"
 import Payment from "./Payment"
 import MenteeNavbar from "../Mentee/MenteeNavbar"
+import OptionChatbot from "../Components/OptionChatbot"
 function Home(){
 
     const { isLoggedIn} = useAuth(); 
@@ -40,6 +41,7 @@ function Home(){
         {/* <Workshop/> */}
         <RoomCode/>
         <Payment/>
+        <OptionChatbot/>
         {/* <Dashboard/> */}
         </>
     )
