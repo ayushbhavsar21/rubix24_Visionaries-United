@@ -8,7 +8,7 @@ import Section3 from "../Section/Section3"
 import Workshop from "../Mentee/Workshop"
 import RoomCode from "./RoomCode"
 import Payment from "./Payment"
-
+import Form from "../Components/Form"
 function Home(){
 
     const { isLoggedIn} = useAuth(); 
@@ -31,6 +31,7 @@ function Home(){
         <Section2/>
         {role==="Mentee" && <Section3/> }
         <Section4/>
+        <Form/>
         <Workshop/>
         <RoomCode/>
         <Payment/>
