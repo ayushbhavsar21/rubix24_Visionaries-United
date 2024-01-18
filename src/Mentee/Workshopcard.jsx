@@ -11,7 +11,7 @@ function Workshopcard() {
                     <h1 className='font-playfair md:text-[40px] text-[30px] font-bold pt-[2vh] ' >Title of Workshop </h1>
                     <p className='font-playfair pl-[35%] ' >By Satya Prakash Jena</p>
                     <p className='font-playfair text-[15px] pl-[50%]  ' >BTech(NIT Raipur)</p>
-                    <p className='font-playfair text-[20px] font-semibold ' >Duration : 1 Hour</p>
+                    <p className='font-playfair text-[20px] font-semibold ' >Room Code: 5555</p>
                     <a href="/room-code" className='py-2 px-4 w-[30%] flex justify-center bg-secondary rounded-3xl text-[18px] text-white'>Join </a>
                 </div>
             </div>
