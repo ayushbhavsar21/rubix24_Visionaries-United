@@ -97,15 +97,15 @@ function MenteeRegister() {
         < >
             <Navbar/>
             
-            <div className="bg-primary h-[87vh] w-[100%] flex justify-around font-playfair">
-            <div className="bg-primary h-[87.9vh] w-[100%] flex justify-around font-playfair">
+            <div className="dark:bg-primary h-[87vh] w-[100%] flex justify-around font-playfair">
+            <div className="dark:bg-primary h-[87.9vh] w-[100%] flex justify-around font-playfair">
                 <div className="w-[50vw] h-[100%] lg:flex hidden">
                 {/* <img className="drop-shadow-2xl w-[90%] relative left-16 bottom-16" src={SignInclipart} alt="" /> */}
                 <img className="drop-shadow-2xl w-[90%] h-[90%] relative bottom-6 " src={SignInclipart} alt="" />
 
                 </div>
-                <div className="lg:w-[50vw] md:w-[60vw] sm:w-[75vw] w-[95vw] flex flex-col lg:justify-start pt-2 lg:items-start items-center justify-center">
-                <div className="text-white text-[25px] pl-[8vw] " > Create a Mentee Account </div>
+                <div className="lg:w-[50vw] md:w-[60vw] sm:w-[75vw] w-[95vw] flex flex-col  pt-2  items-center justify-center">
+                <div className="dark:text-white text-[25px] text-center" > Create a Mentee Account </div>
                     <div className="rounded-[35px] bg-tertiary sm:w-[70%] w-[100%] h-[68vh] flex flex-col gap-1 p-8">
                     <form onSubmit={handleSubmit}>
                     <div className="">                   
@@ -126,17 +126,20 @@ function MenteeRegister() {
                            Register
                         </button>
                         <img className=" drop-shadow-2xl " src={line} alt="" />
+                        <div className="flex justify-center items-center">
                         <button onClick={signInWithGoogle} className=" flex justify-center gap-4 rounded-3xl border-[2px] border-black items-center bg-white drop-shadow-2xl w-[80%] self-center p-2" >
                             <img className="h-[32px]" src={Google} alt="Google" />
                             <p className="">Register with Google</p>
                         </button>
+                        </div>
+                       
                     </form>    
                     </div>
-                    <div className=" w-[80%] flex flex-col items-center lg:pr-12 gap-1 pt-2">
-                        <div className="text-white  text-[24px] ">Already Have Account ?</div>
+                    <div className=" w-[80%] flex flex-col items-center justify-center  gap-1 pt-2 ">
+                        <div className="dark:text-white  text-[18px] ">Already Have Account ?</div>
                         
                         <a href="/SignIn">
-                            <button className=" flex    border-secondary drop-shadow-[0_5px_5px_rgba(58,163,159,0.8)] bg-secondary  rounded-3xl border-[2px] px-3 py-2 text-white " >
+                            <button className=" flex  border-secondary drop-shadow-[0_5px_5px_rgba(58,163,159,0.8)] bg-secondary  rounded-3xl border-[2px] px-3 py-2 text-white " >
                                 <p className=" pr-4 pl-4 ">SignIn</p>
                             </button>
                         </a>

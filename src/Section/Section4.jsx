@@ -2,8 +2,8 @@ import React from 'react'
 import section41 from '../assets/section41.png'
 function Section4() {
   return (
-    <div className='h-[130vh] bg-primary bg-cover bg-center flex flex-col  items-center gap-28' style={{ backgroundImage: `url(${section41})` }}>
-      <div className='text-center text-white'>
+    <div className='h-[130vh] dark:bg-primary bg-white bg-cover bg-center flex flex-col  items-center gap-28' style={{ backgroundImage: `url(${section41})` }}>
+      <div className='text-center dark:text-white text-black'>
      <p className='text-[40px] '>OUR TESTIMONIALS</p>
      <p className='text-[50px] font-bold'>Wins from all around the</p>
      <p className='text-[50px] font-bold'>Globe.</p>
