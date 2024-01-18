@@ -14,11 +14,12 @@ function CourseCards({props}) {
               <p className="mt-3 text-sm">
               {props.text}
               </p>
+              <p>{props.timing}</p>
               <button
                 type="button"
                 className="mt-4 w-full rounded-sm bg-secondary px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-300 "
               >
-                View Lectures
+                View Profile
               </button>
             </div>
           </div>

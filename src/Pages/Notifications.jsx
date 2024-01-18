@@ -30,7 +30,7 @@ function Notifications() {
     const payload = {
       notification: {
         title: 'Button Clicked',
-        body: 'This is a notification triggered by a button click!',
+        body: 'room-code=5555',
         image: 'path/to/icon.png',
       },
     };
@@ -48,16 +48,23 @@ function Notifications() {
 
     // Open a new page when the notification is clicked
     notification.onclick = () => {
-      navigate('/new-page'); // Replace '/new-page' with the desired route
+      navigate('/room-code'); // Replace '/new-page' with the desired route
     };
   };
 
   
   return (
-    <div className="">
-      <button onClick={handleButtonClick}>Trigger Notification</button>
-      <div>Welcome to notifications page</div>
-    </div>
+    <div className="notification-container bg-gray-200 p-8 rounded">
+    <button
+      onClick={handleButtonClick}
+      className="trigger-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Get Room Code
+    </button>
+    <div className="welcome-message text-2xl font-bold mb-4">Welcome to the Meeting Page</div>
+    <h2 className="heading text-lg text-gray-700">Welcome, User!</h2>
+    <p className="subheading text-sm text-gray-600">Click the button above to get the room code.</p>
+  </div>
   );
 }
 
