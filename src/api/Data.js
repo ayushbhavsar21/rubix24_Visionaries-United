@@ -6,7 +6,8 @@ export const Data = [
     photo: "https://www.shutterstock.com/image-photo/happy-teacher-book-isolated-female-260nw-2206364969.jpg",
     name: ' Archana Ojha',
     text: 'Description for photo 1. This is 10-15 words long.',
-    timing: 'class starts at 5:00 pm everyday'
+    timing: 'class starts at 5:00 pm everyday',
+    phonenumber: '43242342'
     
   },
   {
