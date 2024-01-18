@@ -16,7 +16,7 @@ function CourseCards({ props }) {
     <>
       <div className="rounded-md border text-white bg-primary">
         <img
-          src=""
+          src={props.imageUrl}
           alt="Laptop"
           className="aspect-[16/9] w-full rounded-md md:aspect-auto md:h-[300px] lg:h-[200px]"
         />

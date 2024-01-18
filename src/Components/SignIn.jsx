@@ -5,7 +5,7 @@ import Google from "../assets/googleLogo.svg"
 import React, { useState } from 'react'
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { auth, googleProvider } from '../config/firebase'
-import { collection, addDoc} from 'firebase/firestore';
+import { collection, getDoc, doc} from 'firebase/firestore';
 import { db } from '../config/firebase';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -30,31 +30,44 @@ function SignIn() {
         })
     }
 
-    const handleSubmit = async(e)=>{
-
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         try {
-            await signInWithEmailAndPassword(
+            const userCredential = await signInWithEmailAndPassword(
                 auth,
                 user.email,
                 user.password
-              );
-
-              localStorage.setItem('userEmail', user.email);
-              localStorage.setItem('userRole', 'Mentee');
-              localStorage.setItem('userId', user.uid);
-
-              login();
-              navigate("/");
-      
-              console.log('User registered successfully:', userCredential.user);
-            
+            );
+    
+            const loggedInUser = userCredential.user;
+            console.log(loggedInUser.uid);
+            const userDocRef = doc(userCollectionRef, loggedInUser.uid);
+            const userDocSnapshot = await getDoc(userDocRef);
+    
+            if (userDocSnapshot.exists()) {
+                const userData = userDocSnapshot.data();
+    
+                if (userData && userData.role) {
+                    localStorage.setItem('userEmail', user.email);
+                    localStorage.setItem('userRole', userData.role);
+                    localStorage.setItem('userId', loggedInUser.uid);
+    
+                    login();
+                    navigate("/");
+    
+                    console.log('User signed in successfully:', loggedInUser);
+                } else {
+                    console.error('User role not found in Firestore data.');
+                }
+            } else {
+                console.error('User document not found in Firestore.');
+            }
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
-        
-    }
+    };
+    
 
     const signInWithGoogle = async()=>{
         try {
