@@ -16,14 +16,14 @@ function CourseCards({ props }) {
     <>
       <div className="rounded-md border text-white bg-primary">
         <img
-          src={props.photo}
+          src=""
           alt="Laptop"
           className="aspect-[16/9] w-full rounded-md md:aspect-auto md:h-[300px] lg:h-[200px]"
         />
         <div className="p-4">
           <h1 className="inline-flex items-center text-lg font-semibold">{props.name}</h1>
-          <p className="mt-3 text-sm">{props.text}</p>
-          <p>{props.timing}</p>
+          <p className="mt-3 text-sm">{props.bio}</p>
+          <p>{props.availability}</p>
           <p>Popularity: {props.popularity}</p>
           <StarRating rating={props.popularity} />
           <button
@@ -46,10 +46,18 @@ function CourseCards({ props }) {
             >
               Close
             </button>
-            <p>{props.text}</p>
-            <p>{props.timing}</p>
+            <p>{props.name}</p>
             <p>Popularity: {props.popularity}</p>
-          <StarRating rating={props.popularity} />
+            <p>{props.bio}</p>
+            <p>{props.phone}</p>
+            <p>{props.price}</p>
+            <p>{props.email}</p>
+            <p>{props.availability}</p>
+            <p>{props.qualification}</p>
+            <p>{props.domain}</p>
+
+
+          <StarRating rating={4.3} />
         </div>
       )}
     </>
