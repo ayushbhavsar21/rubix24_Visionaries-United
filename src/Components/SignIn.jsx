@@ -40,25 +40,18 @@ function SignIn() {
         }))
     
         try {
-            const userCredential = await signInWithEmailAndPassword(
+               await signInWithEmailAndPassword(
                 auth,
                 user.email,
                 user.password
             );
 
-            const loggedInUser = userCredential.user;
-            const currentUserId = loggedInUser.uid;
+            const currentUserId = auth?.currentUser?.uid;
            const foundDocument = filteredData.find((doc) => doc.userId === currentUserId);
 
-            const foundDocumentId = foundDocument.id;
-            
-            const userDocRef = doc(db, "users", foundDocumentId); 
-
-            const userData = await getDoc(userDocRef);
-
             localStorage.setItem('userEmail', user.email);
-            localStorage.setItem('userRole', userData.role);
-            localStorage.setItem('userId', loggedInUser.uid);
+            localStorage.setItem('userRole', foundDocument.role);
+            localStorage.setItem('userId', currentUserId);
 
             login();
             navigate("/");
