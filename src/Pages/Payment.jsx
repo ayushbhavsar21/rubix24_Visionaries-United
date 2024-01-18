@@ -13,13 +13,14 @@ function Payment() {
             key_secret:"MyOrpu3fQfm9l0PE4ErdNvht",
             amount: amount *100,
             currency:"INR",
-            name:"STARTUP_PROJECTS",
+            name:"Vis-Utd",
             description:"for testing purpose",
             handler: function(response){
               alert(response.razorpay_payment_id);
+              window.location.href = "/";
             },
             prefill: {
-              name:"Velmurugan",
+              name:"",
               email:"mvel1620r@gmail.com",
               contact:"7904425033"
             },
@@ -28,7 +29,7 @@ function Payment() {
             },
             theme: {
               color:"#3399cc"
-            }
+            },
           };
           var pay = new window.Razorpay(options);
           pay.open();

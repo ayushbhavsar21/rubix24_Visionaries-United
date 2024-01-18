@@ -40,6 +40,7 @@ function Home(){
         {role==="Mentee" && <Section3/> }
         <Section4/>
         {/* <Workshop/> */}
+        {/* <Payment/> */}
         <Footer/>
         <OptionChatbot/>
         {/* <Dashboard/> */}
