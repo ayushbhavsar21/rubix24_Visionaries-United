@@ -27,25 +27,30 @@ function Section3() {
   }, [])
   
   return (
-    <div ref={(section) => section && section.scrollIntoView({ behavior: 'smooth' })} id="targetSection" className='flex w-full h-[100vh] bg-primary ' style={{ backgroundImage: `url(${section31})` }}>
-      <div className='flex flex-col h-[100vh] justify-evenly text-gray-900 font-playfair'>
+<>
+<div>
+  <p className='font-playfair text-[40px] pl-4  dark:text-white dark:bg-primary'>Upskilling Courses</p>
+</div>
+<div ref={(section) => section && section.scrollIntoView({ behavior: 'smooth' })} id="targetSection" className='flex w-full h-[80vh] justify-between p-4 dark:bg-primary' style={{ backgroundImage: `url(${section31})` }}>
+      <div className='flex flex-col h-[80vh] justify-evenly text-gray-900 font-playfair'>
+        
         <div>
-          <button className='py-6 w-[200px] bg-white' onClick={() => setSelectedCategory('DSA')}>
+          <button className='py-6 w-[200px] dark:bg-white hover:bg-secondary focus:bg-secondary bg-primary text-white dark:text-black' onClick={() => setSelectedCategory('DSA')}>
             DSA →
           </button>
         </div>
         <div>
-          <button className='py-6 w-[200px] bg-white' onClick={() => setSelectedCategory('WebDevelopment')}>
+          <button className='py-6 w-[200px] dark:bg-white hover:bg-secondary focus:bg-secondary bg-primary text-white dark:text-black' onClick={() => setSelectedCategory('WebDevelopment')}>
             Web Development →
           </button>
         </div>
         <div>
-          <button className='py-6 w-[200px] bg-white' onClick={() => setSelectedCategory('aiml')}>
+          <button className='py-6 w-[200px] dark:bg-white hover:bg-secondary focus:bg-secondary bg-primary text-white dark:text-black' onClick={() => setSelectedCategory('aiml')}>
             AI/ML →
           </button>
         </div>
         <div>
-          <button className='py-6 w-[200px] bg-white' onClick={() => setSelectedCategory('blockchain')}>
+          <button className='py-6 w-[200px] dark:bg-white hover:bg-secondary focus:bg-secondary bg-primary text-white dark:text-black' onClick={() => setSelectedCategory('blockchain')}>
             Blockchain →
           </button>
         </div>
@@ -90,6 +95,8 @@ function Section3() {
         </div>
       </div>
     </div>
+</>
+    
   );
 }
 
