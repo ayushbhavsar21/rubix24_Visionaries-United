@@ -37,7 +37,7 @@ function CourseCards({ props }) {
       </div>
 
       {isPopupOpen && (
-        <div className='fixed top-0 left-0 w-full h-full  bg-white'>
+        <div className='fixed top-5 left-0 w-[95%] h-[95%]  bg-white'>
          
             <button
               type="button"
