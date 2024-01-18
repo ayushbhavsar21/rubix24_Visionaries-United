@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import StarRating from './StarRating';
 
 function CourseCards({ props }) {
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -23,6 +24,8 @@ function CourseCards({ props }) {
           <h1 className="inline-flex items-center text-lg font-semibold">{props.name}</h1>
           <p className="mt-3 text-sm">{props.text}</p>
           <p>{props.timing}</p>
+          <p>Popularity: {props.popularity}</p>
+          <StarRating rating={props.popularity} />
           <button
             type="button"
             onClick={handleViewProfile}
@@ -45,7 +48,8 @@ function CourseCards({ props }) {
             </button>
             <p>{props.text}</p>
             <p>{props.timing}</p>
-       
+            <p>Popularity: {props.popularity}</p>
+          <StarRating rating={props.popularity} />
         </div>
       )}
     </>
