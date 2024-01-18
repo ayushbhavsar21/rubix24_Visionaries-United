@@ -55,10 +55,10 @@ function Navbar() {
           <>
           <a href="/Profile">Create Profile</a>
           <a href="/room-code">Create Meeting</a>
-          </>
+          </>        
       ) : (
         <>
-        <a href="/">Find a Mentor</a>
+        <a href="/SignIn">Find a Mentor</a>
         <a href="/MentorRegister">Become a Mentor</a>
         </>
       )}

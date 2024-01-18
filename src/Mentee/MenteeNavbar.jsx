@@ -121,7 +121,9 @@ function MenteeNavbar() {
         <>
         <a href="/Dashboard">DashBoard</a>
         <a href="/workshop">WorkShop</a>
-        <a href="/">Find a Mentor</a>
+        <button onClick={() => document.getElementById('targetSection').scrollIntoView({ behavior: 'smooth' })}>
+        Find a Mentor
+      </button>
         </>
       )}
         
