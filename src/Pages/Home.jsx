@@ -4,7 +4,8 @@ import Section1 from '../Section/Section1'
 import Section2 from '../Section/Section2'
 import Section4 from '../Section/Section4'
 import Workshop from "../Mentee/Workshop"
-
+import RoomCode from "./RoomCode"
+import Payment from "./Payment"
 function Home(){
     return (
         <>
@@ -13,6 +14,8 @@ function Home(){
         <Section2/>
         <Section4/>
         <Workshop/>
+        <RoomCode/>
+        <Payment/>
         </>
     )
 }
