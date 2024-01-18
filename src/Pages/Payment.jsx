@@ -36,12 +36,24 @@ function Payment() {
       }
 
     return (
-        <div className="App">
-     <h2>Razorpay Payment Integration Using React</h2>
-     <br/>
-     <input type="text"placeholder='Enter Amount'value={amount}onChange={(e)=>setamount(e.target.value)} />
-     <br/><br/>
-     <button onClick={handleSubmit}>submit</button>
+      <div className="App h-screen flex flex-col items-center justify-center bg-primary">
+      <h2 className="text-3xl text-white font-bold mb-4">Subscribe for Mentorship Sessions</h2>
+      <p className="text-gray-600 mb-6">Enter the amount and proceed with the payment for mentorship sessions.</p>
+      <div className=" rounded-md">
+        <input
+          type="text"
+          placeholder="Enter Amount"
+          value={amount}
+          onChange={(e) => setamount(e.target.value)}
+          className="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500"
+        />
+      </div>
+      <button
+        onClick={handleSubmit}
+        className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
+      >
+        Subscribe Now
+      </button>
     </div>
     )
 }
