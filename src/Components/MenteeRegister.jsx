@@ -44,9 +44,9 @@ function MenteeRegister() {
               );
 
               localStorage.setItem('userEmail', user.email);
-              localStorage.setItem('userName', user.displayName);
+              localStorage.setItem('userName', user.userName);
               localStorage.setItem('userRole', 'Mentee');
-              localStorage.setItem('userId', user.uid);
+              localStorage.setItem('userId', auth?.currentUser?.uid);
       
               await addDoc(userCollectionRef,{
                 email: user.email,

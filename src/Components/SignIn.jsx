@@ -5,7 +5,7 @@ import Google from "../assets/googleLogo.svg"
 import React, { useState } from 'react'
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { auth, googleProvider } from '../config/firebase'
-import { collection, getDoc, doc} from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc} from 'firebase/firestore';
 import { db } from '../config/firebase';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -32,6 +32,12 @@ function SignIn() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const data = await getDocs(userCollectionRef);
+        const filteredData = data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }))
     
         try {
             const userCredential = await signInWithEmailAndPassword(
@@ -39,30 +45,23 @@ function SignIn() {
                 user.email,
                 user.password
             );
-    
+
             const loggedInUser = userCredential.user;
-            console.log(loggedInUser.uid);
-            const userDocRef = doc(userCollectionRef, loggedInUser.uid);
-            const userDocSnapshot = await getDoc(userDocRef);
-    
-            if (userDocSnapshot.exists()) {
-                const userData = userDocSnapshot.data();
-    
-                if (userData && userData.role) {
-                    localStorage.setItem('userEmail', user.email);
-                    localStorage.setItem('userRole', userData.role);
-                    localStorage.setItem('userId', loggedInUser.uid);
-    
-                    login();
-                    navigate("/");
-    
-                    console.log('User signed in successfully:', loggedInUser);
-                } else {
-                    console.error('User role not found in Firestore data.');
-                }
-            } else {
-                console.error('User document not found in Firestore.');
-            }
+            const currentUserId = loggedInUser.uid;
+           const foundDocument = filteredData.find((doc) => doc.userId === currentUserId);
+
+            const foundDocumentId = foundDocument.id;
+            
+            const userDocRef = doc(db, "users", foundDocumentId); 
+
+            const userData = await getDoc(userDocRef);
+
+            localStorage.setItem('userEmail', user.email);
+            localStorage.setItem('userRole', userData.role);
+            localStorage.setItem('userId', loggedInUser.uid);
+
+            login();
+            navigate("/");
         } catch (error) {
             console.error(error);
         }

@@ -46,7 +46,7 @@ function MentorRegister() {
               localStorage.setItem('userEmail', user.email);
               localStorage.setItem('userName', user.displayName);
               localStorage.setItem('userRole', 'Mentor');
-              localStorage.setItem('userId', user.uid);
+              localStorage.setItem('userId', auth?.currentUser?.uid);
       
               await addDoc(userCollectionRef,{
                 email: user.email,
