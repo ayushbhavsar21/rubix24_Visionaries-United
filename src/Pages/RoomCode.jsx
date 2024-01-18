@@ -26,34 +26,66 @@ function RoomCode() {
     };
 
     return (
-        <div className="w-full flex items-center justify-center bg-gray-100">
-            <div className="bg-white shadow-md rounded-md p-8 w-full max-w-md">
-                <h1 className="text-2xl font-bold mb-6 text-center">Enter Room Code</h1>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                        <label htmlFor="roomCode" className="block text-gray-700 text-sm font-bold mb-2">Room Code</label>
-                        <input
-                            id="roomCode"
-                            type="text"
-                            required
-                            placeholder="Enter Room Code"
-                            value={roomCode}
-                            onChange={handleRoomCodeChange}
-                            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-                        />
-                    </div>
-                    <div>
-                        <button
-                            type="submit"
-                            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
-                        >
-                            Enter Room
-                        </button>
-                    </div>
-                </form>
+        // <div className="w-full flex items-center justify-center bg-gray-100">
+        //     <div className="bg-white shadow-md rounded-md p-8 w-full max-w-md">
+        //         <h1 className="text-2xl font-bold mb-6 text-center">Enter Room Code</h1>
+        //         <form onSubmit={handleSubmit} className="space-y-4">
+        //             <div>
+        //                 <label htmlFor="roomCode" className="block text-gray-700 text-sm font-bold mb-2">Room Code</label>
+        //                 <input
+        //                     id="roomCode"
+        //                     type="text"
+        //                     required
+        //                     placeholder="Enter Room Code"
+        //                     value={roomCode}
+        //                     onChange={handleRoomCodeChange}
+        //                     className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+        //                 />
+        //             </div>
+        //             <div>
+        //                 <button
+        //                     type="submit"
+        //                     className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
+        //                 >
+        //                     Enter Room
+        //                 </button>
+        //             </div>
+        //         </form>
                
+        //     </div>
+        // </div> 
+        <div className="w-full h-screen flex items-center justify-center bg-primary">
+        <div className="bg-[#FAF5FF] shadow-md rounded-md p-8 w-full max-w-md">
+          <h1 className="text-2xl font-bold mb-6 text-center">Enter Room Code</h1>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label
+                htmlFor="roomCode"
+                className="block text-gray-700 text-sm font-bold mb-2"
+              >
+                Room Code
+              </label>
+              <input
+                id="roomCode"
+                type="text"
+                required
+                placeholder="Enter Room Code"
+                value={roomCode}
+                onChange={handleRoomCodeChange}
+                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+              />
             </div>
+            <div>
+              <button
+                type="submit"
+                className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
+              >
+                Enter Room
+              </button>
+            </div>
+          </form>
         </div>
+      </div>
     );
 }
 

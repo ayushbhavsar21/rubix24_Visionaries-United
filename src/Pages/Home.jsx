@@ -41,8 +41,6 @@ function Home(){
         <Section4/>
         {/* <Workshop/> */}
         <Footer/>
-        <RoomCode/>
-        <Payment/>
         <OptionChatbot/>
         {/* <Dashboard/> */}
         </>
