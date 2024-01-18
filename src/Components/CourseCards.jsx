@@ -57,7 +57,7 @@ function CourseCards({ props }) {
             <p>{props.domain}</p>
 
 
-          <StarRating rating={4.3} />
+          <StarRating rating={props.popularity} />
         </div>
       )}
     </>
