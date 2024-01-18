@@ -27,7 +27,7 @@ function Section3() {
   }, [])
   
   return (
-    <div className='flex w-full h-[100vh] bg-primary ' style={{ backgroundImage: `url(${section31})` }}>
+    <div ref={(section) => section && section.scrollIntoView({ behavior: 'smooth' })} id="targetSection" className='flex w-full h-[100vh] bg-primary ' style={{ backgroundImage: `url(${section31})` }}>
       <div className='flex flex-col h-[100vh] justify-evenly text-gray-900 font-playfair'>
         <div>
           <button className='py-6 w-[200px] bg-white' onClick={() => setSelectedCategory('DSA')}>

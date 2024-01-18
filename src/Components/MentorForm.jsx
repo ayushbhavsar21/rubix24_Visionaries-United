@@ -4,6 +4,7 @@ import { db, auth } from '../config/firebase';
 import { useNavigate } from "react-router-dom";
 import { storage } from '../config/firebase';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import Navbar from './Navbar';
 
 function MentorForm() {
 
@@ -125,10 +126,11 @@ function MentorForm() {
     }
 
   return (
-    
-      
+    <>
+      <Navbar/>
 
-<form onSubmit={handleSubmit} className="p-8 bg-primary font-playfair">
+
+<form onSubmit={handleSubmit} className="p-8 h-[88vh] bg-primary font-playfair">
 <div class="grid md:grid-cols-2 md:gap-6">
     <div class="relative z-0 w-full mb-5 group">
         <input type="text" name="name" id="names" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-500 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required  value={mentor.name} onChange={handleInput}/>
@@ -193,6 +195,7 @@ function MentorForm() {
 
   <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mt-4">Submit</button>
 </form>
+</>
 
   )
 }
