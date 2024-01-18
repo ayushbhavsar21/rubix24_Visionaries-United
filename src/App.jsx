@@ -12,6 +12,8 @@ import RoomPage from './Pages/RoomPage'
 import Notifications from './Pages/Notifications'
 import Dashboard from './Mentee/Dashboard'
 import Workshop from './Mentee/Workshop'
+import MentorForm from './Components/MentorForm'
+
 function App() {
 
   return (
@@ -27,6 +29,7 @@ function App() {
       <Route path='/notifications-page' element={<Notifications/>}/>
       <Route path='/Dashboard' element={<Dashboard/>}/>
       <Route path='/Workshop' element={<Workshop/>}/>
+      <Route path='/Profile' element={<MentorForm/>}/>
     </Routes>
     </>
   )

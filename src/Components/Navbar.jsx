@@ -52,7 +52,10 @@ function Navbar() {
       <div className='md:flex gap-[4vw] items-center hidden'>
         <a href="/">Home</a>
         {role === 'Mentor' ? (
-        <a href="/room-code">Create Meeting</a>
+          <>
+          <a href="/Profile">Create Profile</a>
+          <a href="/room-code">Create Meeting</a>
+          </>
       ) : (
         <>
         <a href="/">Find a Mentor</a>

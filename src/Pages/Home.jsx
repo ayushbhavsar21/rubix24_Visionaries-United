@@ -8,8 +8,6 @@ import Section3 from "../Section/Section3"
 import Workshop from "../Mentee/Workshop"
 import RoomCode from "./RoomCode"
 import Payment from "./Payment"
-import Form from "../Components/Form"
-import Dashboard from "../Mentee/Dashboard"
 import MenteeNavbar from "../Mentee/MenteeNavbar"
 function Home(){
 
@@ -39,7 +37,6 @@ function Home(){
         <Section2/>
         {role==="Mentee" && <Section3/> }
         <Section4/>
-        <Form/>
         {/* <Workshop/> */}
         <RoomCode/>
         <Payment/>
