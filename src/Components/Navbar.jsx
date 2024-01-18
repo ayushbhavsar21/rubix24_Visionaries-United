@@ -1,7 +1,7 @@
 import React from 'react'
 import NavLogo from '../assets/navLogo.svg'
 import Ham from '../assets/ham.svg'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { signOut } from 'firebase/auth';
 import { auth } from '../config/firebase';
@@ -9,6 +9,19 @@ import { auth } from '../config/firebase';
 function Navbar() {
 
   const { isLoggedIn , logout } = useAuth(); 
+  const [role, setRole] = useState('');
+
+  useEffect(() => {
+    const checkUserRole = () => {
+      if (isLoggedIn) {
+        const storedRole = localStorage.getItem('userRole');
+        setRole(storedRole);
+      }
+    };
+
+    checkUserRole();
+  }, [isLoggedIn]);
+
 
   const handleLogout = async() => {
     try{
@@ -38,8 +51,15 @@ function Navbar() {
       </div>
       <div className='md:flex gap-[4vw] items-center hidden'>
         <a href="/">Home</a>
-        <a href="">Find a mentor</a>
+        {role === 'Mentor' ? (
+        <a href="/room-code">Create Meeting</a>
+      ) : (
+        <>
+        <a href="/">Find a Mentor</a>
         <a href="/MentorRegister">Become a Mentor</a>
+        </>
+      )}
+        
         {isLoggedIn ? (
           <a onClick={handleLogout} className='py-2 px-4 bg-secondary rounded-3xl'>Logout</a>
         ):(
