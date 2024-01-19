@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import StarRating from './StarRating';
 import { updateDoc, getDocs, doc, collection } from 'firebase/firestore';
-import { db , auth} from '../config/firebase';
+import { db, auth } from '../config/firebase';
 
 function CourseCards({ props }) {
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -14,9 +14,9 @@ function CourseCards({ props }) {
     setPopupOpen(false);
   };
 
-  const handleClick = async(event, mentorId) => {
+  const handleClick = async (event, mentorId) => {
     event.preventDefault();
-    
+
     const data = await getDocs(userCollectionRef);
     const filteredData = data.docs.map((doc) => ({
       ...doc.data(),
@@ -26,21 +26,21 @@ function CourseCards({ props }) {
     const currentUserId = auth?.currentUser?.uid;
 
     const foundDocument = filteredData.find((doc) => doc.userId === currentUserId);
-        const foundDocumentId = foundDocument.id;
-        console.log(foundDocument);
-        const userDocRef = doc(db, "users", foundDocumentId);
-    
-        try {
+    const foundDocumentId = foundDocument.id;
+    console.log(foundDocument);
+    const userDocRef = doc(db, "users", foundDocumentId);
 
-            await updateDoc(userDocRef, {
-                MentorId: mentorId,
-            });
-            
-        } catch (error) {
-            console.error('Error updating room code:', error.message);
-        }
-    
-};
+    try {
+
+      await updateDoc(userDocRef, {
+        MentorId: mentorId,
+      });
+
+    } catch (error) {
+      console.error('Error updating room code:', error.message);
+    }
+
+  };
 
   // Helper function to truncate bio to 10-15 words
   const truncateBio = (bio) => {
@@ -73,26 +73,43 @@ function CourseCards({ props }) {
       </div>
 
       {isPopupOpen && (
-        <div className='fixed top-0 left-0 w-[99vw] h-[100vh]  bg-white'>
+        <div className='fixed top-5 left-3 border-2 border-black w-[90vw] h-[90vh] dark:bg-primary  bg-[#FAF5FF] '>
           <button
             type="button"
             onClick={handleClosePopup}
-            className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
+            className="absolute top-2 right-2 text-gray-600 hover:text-gray-800 dark:text-white "
           >
             Close
           </button>
-          <p>{props.name}</p>
-          <p>Popularity: {props.popularity}</p>
-          <p>{props.bio}</p>
-          <p>{props.phone}</p>
-          <p>{props.price}</p>
+          <div className="flex pt-20 dark:text-white  "> <p className=' pl-5 text-[20px]'  >Name:</p>
+            <p className=' pl-5 text-[20px] ' >{props.name}</p>
+          </div>
+          <div className="flex dark:text-white  "> <p className=' pl-5 text-[20px] '  >Popularity: </p>
+            <p className='pl-5 text-[20px] ' >{props.popularity}</p>
+          </div>
+          <div className="flex dark:text-white  "> <p className=' pl-5 text-[20px] '  >Bio:</p> 
+          <p className='pl-5' >{props.bio}</p>
+          </div>
+          <div className="flex dark:text-white  "> <p className=' pl-5 text-[20px] '  >Phone:</p> 
+          <p className=' pl-5 text-[20px] ' >{props.phone}</p>
+          </div>
+          <div className="flex dark:text-white  "> <p className=' pl-5 text-[20px] '  >Pricing:</p> 
+          <p className=' pl-5 text-[20px] ' >{props.price}</p>
+          </div>
+          <div className="flex dark:text-white  "> <p className=' pl-5 text-[20px] '  >Email:</p> 
           <p>{props.email}</p>
+          </div>
+          <div className="flex dark:text-white  "> <p className=' pl-5 text-[20px] '  >Availability:</p> 
           <p>{props.availability}</p>
-          <p>{props.qualification}</p>
-          <p>{props.domain}</p>
-          <StarRating rating={props.popularity} />
-          <button onClick={async(event) => handleClick(event, props.id)} className="ml-[37%]  drop-shadow-[0_5px_5px_rgba(58,163,159,0.8)] px-4 py-3 w-[120px] bg-secondary text-white  rounded-3xl  self-center mt-4 " >
-              Register
+          </div>
+          <div className="flex dark:text-white  "> <p className=' pl-5 text-[20px] '  >Qualification:</p> 
+          <p className='pl-5 text-[20px] ' >{props.qualification}</p></div>
+          <div className="flex dark:text-white  "> <p className=' pl-5 text-[20px] '  >Domain:</p> 
+          <p className='pl-5 text-[20px] ' >{props.domain}</p></div>
+          <div className="pl-9 ">
+          <StarRating  rating={props.popularity} /></div>
+          <button onClick={async (event) => handleClick(event, props.id)} className="ml-[37%]  drop-shadow-[0_5px_5px_rgba(58,163,159,0.8)] px-4 py-3 w-[120px] bg-secondary text-white  rounded-3xl  self-center mt-4 " >
+            Register
           </button>
         </div>
       )}

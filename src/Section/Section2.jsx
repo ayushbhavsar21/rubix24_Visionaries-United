@@ -3,13 +3,15 @@ import section21 from '../assets/Section21.svg'
 import section22 from '../assets/section22.png'
 import section23 from '../assets/section23.png'
 import section24 from '../assets/section24.png'
+import section23dark from '../assets/section23dark.png'
 function Section2() {
   return (
     <div className='flex justify-around items-center w-full dark:bg-primary h-[100vh]'>
       <div className='w-[50%] relative left-16 top-20'>
        <img src={section21} alt="" className='relative left-28 top-24 w-[45%]' />
        <img src={section22} alt="" className='relative bottom-[350px] w-[130px] left-12'/>
-       <img src={section23} alt="" className='relative bottom-[110px] w-[130px] left-12 '/>
+       <img src={section23} alt="" className='hidden dark:inline relative bottom-[110px] w-[130px] left-12 '/>
+       <img src={section23dark} alt="" className='dark:hidden relative bottom-[110px] w-[130px] left-12 '/>
        <img src={section24} alt="" className='relative  w-[150px] bottom-[300px] left-10'/>
       </div>
       <div className='flex flex-col w-[35%] dark:text-white text-black font-playfair relative right-28 bottom-20 gap-4'>

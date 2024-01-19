@@ -11,6 +11,7 @@ import Payment from "./Payment"
 import MenteeNavbar from "../Mentee/MenteeNavbar"
 import OptionChatbot from "../Components/OptionChatbot"
 import Footer from "../Components/Footer"
+import Section11 from '../Section/Section11'
 function Home(){
 
     const { isLoggedIn} = useAuth(); 
@@ -36,6 +37,7 @@ function Home(){
         
       )}
         <Section1/>
+        <Section11/>
         <Section2/>
         {role==="Mentee" && <Section3/> }
         <Section4/>
