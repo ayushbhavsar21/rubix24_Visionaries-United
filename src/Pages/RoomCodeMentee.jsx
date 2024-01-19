@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { updateDoc, getDocs, doc, collection } from 'firebase/firestore';
-import { db , auth} from '../config/firebase';
 
-function HomePage() {
+
+function MenteeRoom() {
     const [roomCode, setRoomCode] = useState('');
     const navigate = useNavigate();
-
-    const mentorCollectionRef = collection(db, "Mentors");
 
     const handleRoomCodeChange = (event) => {
         setRoomCode(event.target.value);
     };
+
 
     const handleEnterRoom = () => {
         // You can add your logic here for handling entering the room with the code
@@ -22,39 +20,8 @@ function HomePage() {
     const handleSubmit = async(event) => {
         event.preventDefault();
         
-        const data = await getDocs(mentorCollectionRef);
-        const filteredData = data.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }))
-
-        const currentUserId = auth?.currentUser?.uid;
-
-        const foundDocument = filteredData.find((doc) => doc.userId === currentUserId);
-
-        console.log(filteredData);
-            const foundDocumentId = foundDocument.id;
-            
-            const mentorDocRef = doc(db, "Mentors", foundDocumentId);
+        handleEnterRoom();
         
-            try {
-
-                await updateDoc(mentorDocRef, {
-                    roomCode: roomCode,
-                });
-
-                await handleEnterRoom();
-                
-                console.log('Room code updated successfully.');
-            } catch (error) {
-                console.error('Error updating room code:', error.message);
-            }
-        
-    };
-
-    const handleGoToHome1 = () => {
-
-        navigate('/home1');
     };
 
     return (
@@ -96,4 +63,4 @@ function HomePage() {
     );
 }
 
-export default HomePage;
+export default MenteeRoom;

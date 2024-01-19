@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import StarRating from './StarRating';
 import { updateDoc, getDocs, doc, collection } from 'firebase/firestore';
 import { db, auth } from '../config/firebase';
+import { useNavigate } from 'react-router-dom';
 
 function CourseCards({ props }) {
   const [isPopupOpen, setPopupOpen] = useState(false);
 
+  const navigate = useNavigate();
   const handleViewProfile = () => {
     setPopupOpen(true);
   };
@@ -14,6 +16,7 @@ function CourseCards({ props }) {
     setPopupOpen(false);
   };
 
+  const userCollectionRef = collection(db, 'users');
   const handleClick = async (event, mentorId) => {
     event.preventDefault();
 
@@ -35,7 +38,7 @@ function CourseCards({ props }) {
       await updateDoc(userDocRef, {
         MentorId: mentorId,
       });
-
+      navigate("/Payment");
     } catch (error) {
       console.error('Error updating room code:', error.message);
     }

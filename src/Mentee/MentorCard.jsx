@@ -1,5 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 function MentorCard({props}) {
+    const [isCopied, setIsCopied] = useState(false);
+    const copyToClipboard = () => {
+        navigator.clipboard.writeText(props.roomCode);
+        setIsCopied(true);
+      };
     return (
         <>
         <div className=" bg-gradient-to-r from-[#FAF5FF] from-0% via-[#3ec6d7] via-65% to-[#FAF5FF] to-100% md:w-[70%] w-[80%] h-[35vh] rounded-[25px] border border-black  flex items-center mb-[3vh]  ">
@@ -11,7 +16,13 @@ function MentorCard({props}) {
                     <p className='font-playfair pl-[35%] ' >{props.name}</p>
                     <p className='font-playfair text-[15px] pl-[50%]  ' >{props.qualification}</p>
                     <p className='font-playfair text-[20px] font-semibold ' >{props.roomCode}</p>
-                    <a href="/room-code" className='py-2 px-4 w-[30%] flex justify-center bg-secondary rounded-3xl text-[18px] text-white'>Join </a>
+                    <button
+              onClick={copyToClipboard}
+              className="py-2 px-4 w-[30%] flex justify-center bg-secondary rounded-3xl text-[18px] text-white mr-2"
+            >
+              {isCopied ? 'Copied!' : 'Copy'}
+            </button>
+                    <a href="/room-mentor" className='py-2 px-4 w-[30%] flex justify-center bg-secondary rounded-3xl text-[18px] text-white'>Join </a>
                 </div>
             </div>
         </>

@@ -61,13 +61,7 @@ function Dashboard() {
                         />
                     ))}
                 </div>
-                <div>
-                    <h1 className='text-white text-[36px] w-[90%] ml-9 pl-9 pb-1 mb-9 border-b-4 border-white   ' >Workshops</h1>
-                    <div className='bg-primary w-[100%] flex flex-col gap-[5vh] items-center  '>
-                        <Workshopcard />
-                        <Workshopcard />
-                    </div>
-                </div>
+                
             </div>
         </>
     )

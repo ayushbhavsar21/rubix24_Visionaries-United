@@ -13,6 +13,8 @@ import Notifications from './Pages/Notifications'
 import Dashboard from './Mentee/Dashboard'
 import Workshop from './Mentee/Workshop'
 import MentorForm from './Components/MentorForm'
+import MenteeRoom from './Pages/RoomCodeMentee'
+import Payment from './Pages/Payment'
 
 function App() {
 
@@ -30,6 +32,8 @@ function App() {
       <Route path='/Dashboard' element={<Dashboard/>}/>
       <Route path='/Workshop' element={<Workshop/>}/>
       <Route path='/Profile' element={<MentorForm/>}/>
+      <Route path='/room-mentor' element={<MenteeRoom/>}/>
+      <Route path='/Payment' element={<Payment/>}/>
     </Routes>
     </>
   )
