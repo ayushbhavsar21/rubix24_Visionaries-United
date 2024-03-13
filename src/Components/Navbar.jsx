@@ -5,9 +5,9 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { signOut } from 'firebase/auth';
 import { auth } from '../config/firebase';
-import moon from '../assets/moon.png'
-import sun from '../assets/sun.png'
-import NavLogo from '../assets/navLogo.png'
+import moon from '../assets/moon.png';
+import sun from '../assets/sun.png';
+import NavLogo from '../assets/Nav.png';
 function Navbar() {
 
   const { isLoggedIn , logout } = useAuth(); 

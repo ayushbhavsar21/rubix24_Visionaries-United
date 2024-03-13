@@ -63,7 +63,7 @@ function MenteeNavbar() {
 
 export default MenteeNavbar*/
 import React from 'react'
-import NavLogo from '../assets/navLogo.png'
+import NavLogo from '../assets/Nav.png'
 import Ham from '../assets/ham.svg'
 import { useState, useEffect } from 'react'
 import { useAuth } from '../context/AuthContext'
