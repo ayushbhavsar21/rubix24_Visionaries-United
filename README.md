@@ -62,8 +62,10 @@ Start the server
 
 ## Demo
 
-https://guru-ji.netlify.app/
+#### Live Website link : <br/> https://guru-ji.netlify.app/
 
+
+ [<img src="youtube.svg" width="5%" >](https://www.youtube.com/watch?v=Nq-asRxEhto&t=2s "GuruJi")
 
 ## Tech Stack
 
