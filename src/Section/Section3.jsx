@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import section31 from '../assets/section31.png';
+import Worldmap from '../assets/Worldmap.png'
 import CourseCards from '../Components/CourseCards';
 import { getDocs, collection } from 'firebase/firestore';
 import { db } from '../config/firebase';
@@ -31,7 +32,7 @@ function Section3() {
 <div>
   <p className='font-playfair text-[40px] pl-4  dark:text-white dark:bg-primary'>Upskilling Courses</p>
 </div>
-<div ref={(section) => section && section.scrollIntoView({ behavior: 'smooth' })} id="targetSection" className='flex w-full h-[80vh] justify-between p-4 dark:bg-primary' style={{ backgroundImage: `url(${section31})` }}>
+<div ref={(section) => section && section.scrollIntoView({ behavior: 'smooth' })} id="targetSection" className='flex w-full h-[80vh] justify-between p-4 dark:bg-primary' style={{ backgroundImage: `url(${Worldmap})` , backgroundRepeat: 'no-repeat' }}>
       <div className='flex flex-col h-[80vh] justify-evenly text-gray-900 font-playfair'>
         
         <div>
