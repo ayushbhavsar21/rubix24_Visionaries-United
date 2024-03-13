@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import section31 from '../assets/section31.png';
+// import section31 from '../assets/section31.png';
 import Worldmap from '../assets/Worldmap.png'
 import CourseCards from '../Components/CourseCards';
 import { getDocs, collection } from 'firebase/firestore';
