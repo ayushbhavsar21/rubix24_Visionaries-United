@@ -48,22 +48,23 @@ function Dashboard() {
     const foundMentorId = foundDocument ? foundDocument.MentorId : null;
     
     return (
-        <>
+        <div className=' dark:bg-primary h-[100vh] overflow-hidden ' >
             <MenteeNavbar />
-            <div className="bg-primary   flex flex-col   ">
+            <div className="dark:bg-primary   flex flex-col   ">
                 <div>
-                    <h1 className='text-white text-[36px] w-[90%] ml-9 pl-9 pb-1 mb-9 border-b-4 border-white ' >Mentors</h1>
-                    <div>Join Meeting</div>
+                    <h1 className='dark:text-white text-[36px] w-[90%] ml-9 pl-9 pb-1 mb-9 border-b-4 dark:border-white border-black ' >Mentors</h1>
+                    <div className='w-[full] flex justify-center flex-col items-center ' > 
                     {mentorList.filter(mentor=>mentor.id===foundMentorId).map(item=>(
                         <MentorCard
                         key={item.id}
                         props={item}
                         />
                     ))}
+                    </div>
                 </div>
                 
             </div>
-        </>
+        </div>
     )
 }
 
