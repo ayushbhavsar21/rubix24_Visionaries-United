@@ -18,6 +18,9 @@ export default {
         playfair: ['Playfair Display', 'serif'],
         dancing: ['Dancing Script', 'cursive'],
       },
+      fontSize: {
+        clamp: "clamp(1rem, 5vw, 3rem)",
+      },
     },
   },
   plugins: [],
