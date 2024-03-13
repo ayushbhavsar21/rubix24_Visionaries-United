@@ -40,12 +40,9 @@ function Home(){
         <Section11/>
         <Section2/>
         {role==="Mentee" && <Section3/> }
-        {/* <Section4/> */}
-        {/* <Workshop/> */}
-        {/* <Payment/> */}
+        <Section4/>
         <Footer/>
         <OptionChatbot/>
-        {/* <Dashboard/> */}
         </>
     )
 }
