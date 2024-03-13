@@ -2,8 +2,9 @@ import React,{useState, useEffect} from 'react'
 import MenteeNavbar from './MenteeNavbar'
 import { getDocs, collection , doc} from 'firebase/firestore';
 import { db, auth } from '../config/firebase';
-import Workshopcard from './Workshopcard';
+// import Workshopcard from './Workshopcard';
 import MentorCard from './MentorCard';
+import Footer from '../Components/Footer';
 
 function Dashboard() {
 
@@ -52,7 +53,7 @@ function Dashboard() {
             <MenteeNavbar />
             <div className="dark:bg-primary   flex flex-col   ">
                 <div>
-                    <h1 className='dark:text-white text-[36px] w-[90%] ml-9 pl-9 pb-1 mb-9 border-b-4 dark:border-white border-black ' >Mentors</h1>
+                    <h1 className='dark:text-white text-[30px] md:text-[36px] w-[90%] ml-9 pl-9 pb-1 mb-9 border-b-4 dark:border-white border-black ' >Mentors</h1>
                     <div className='w-[full] flex justify-center flex-col items-center ' > 
                     {mentorList.filter(mentor=>mentor.id===foundMentorId).map(item=>(
                         <MentorCard
@@ -64,6 +65,7 @@ function Dashboard() {
                 </div>
                 
             </div>
+            <div className=''> <Footer/> </div>
         </div>
     )
 }
