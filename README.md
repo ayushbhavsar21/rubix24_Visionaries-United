@@ -71,7 +71,7 @@ Start the server
 
 **Client:** React, Redux, TailwindCSS, HTML, Javascript
 
-**Server:** Node, Firebase
+**Server:** Node, Firebase.
 
 
 ## Authors
