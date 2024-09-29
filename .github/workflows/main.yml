@@ -1,9 +1,12 @@
-name: Deploy to Netlify
+name: Deploy to Netlify using Build Hook
 
 on:
   push:
     branches:
-      - main  # Run this workflow on pushes to the main branch
+      - main  # Trigger the workflow when changes are pushed to the main branch
+  pull_request:
+    branches:
+      - main  # Optionally, trigger on pull requests to main branch
 
 jobs:
   deploy:
@@ -13,21 +16,6 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js (if your project uses Node.js)
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'  # Specify the Node.js version as per your project
-
-      - name: Install dependencies (if needed)
-        run: npm install  # Modify this if you have different commands
-
-      - name: Build the project (if needed)
-        run: npm run build  # Update this for your project’s build command
-
-      - name: Deploy to Netlify
+      - name: Trigger Netlify Build Hook
         run: |
-          curl -X POST \
-            -H "Authorization: Bearer ${{ secrets.NETLIFY_AUTH_TOKEN }}" \
-            -H "Content-Type: application/json" \
-            --data '{"clear_cache": false}' \
-            https://api.netlify.com/api/v1/sites/b1923082-ec67-4a3b-a940-c1d712b73aac/deploys
+          curl -X POST ${{ secrets.NETLIFY_BUILD_HOOK_URL }}
